@@ -8,25 +8,25 @@ namespace Combinatorics
 {
     public class Combinations
     {
-        private static List<string> listCombination = new List<string>();
+        private static List<string> listCombinations = new List<string>();
 
         public List<string> CreateCombinations(string str)
         {
             for (int i = 0; i < str.Length; i++)
                 AddCombination(str, str[i].ToString(), i + 1);
-            return SortList(listCombination, str.Length);
+            return SortList(listCombinations, str.Length);
         }
 
-        private static void AddCombination(string str, string current, int lenghtCombination)
+        private static void AddCombination(string str, string current, int counter)
         {
             string combination;
-            while (lenghtCombination < str.Length)
+            while (counter < str.Length)
             {
                 combination = current;
-                combination += str[lenghtCombination++];
-                listCombination.Add(combination);
+                combination += str[counter++];
+                listCombinations.Add(combination);
                 if (combination.Length < str.Length + 1)
-                    AddCombination(str, combination, lenghtCombination);
+                    AddCombination(str, combination, counter);
             }
         }
 
